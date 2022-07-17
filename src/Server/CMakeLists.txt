@@ -1,6 +1,7 @@
 cmake_minimum_required (VERSION 3.20)
 
 # Find dependencies
+find_package(spdlog CONFIG REQUIRED)
 find_package(asio CONFIG REQUIRED)
 
 set(headers
@@ -24,4 +25,5 @@ add_executable (Server ${sources} ${headers})
 target_precompile_headers(Server PRIVATE "pch.h")
 
 # Link dependencies
+target_link_libraries(Server PRIVATE spdlog::spdlog)
 target_link_libraries(Server PRIVATE asio asio::asio)
